@@ -4,7 +4,7 @@
 
 library('ProjectTemplate')
 load.project()
-
+library(dplyr)
 library(moderndive)
 
 ##################################

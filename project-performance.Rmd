@@ -34,7 +34,7 @@ rmse <- rmse(RUL.FD001[1:30,],basic_predictions)
 error <- RUL.FD001[1:30,]-basic_predictions
 num_predictions <- length(error)
 late <- length(error<0)
-success <- late > 1
+success <- late < 1
 ```
 
 The root mean square error of the basic model is `r rmse` days. However, there were `r late` predictions (out of `r num_predictions`) for the end of life that were after the engine failure. This means that the model FPS success is `r success`.

@@ -18,67 +18,67 @@ project
 |   |   README.md
 │   │
 │   └───cache
-│       │   README.md
-│       │   RUL.FD001.hash
-|       |   RUL.FD001.RData
-│       │   ...
-|       
+│   |   │   README.md
+│   |   │   RUL.FD001.hash
+|   |   |   RUL.FD001.RData
+│   |   │   ...
+|   |   
 │   └───config
-│       │   README.md
-│       │   global.dcf
-|       |
+│   |   │   README.md
+│   |   │   global.dcf
+|   |   
 │   └───data
-│       │   README.md
-│       │   RUL_FD001.txt
-│       │   RUL_FD002.txt
-│       │   RUL_FD003.txt
-│       │   RUL_FD004.txt
-│       │   test_FD001.txt
-│       │   test_FD002.txt
-│       │   test_FD003.txt
-│       │   test_FD004.txt
-│       │   train_FD001.txt
-│       │   train_FD002.txt
-│       │   train_FD003.txt
-│       │   train_FD004.txt
-|       |
+│   |   │   README.md
+│   |   │   RUL_FD001.txt
+│   |   │   RUL_FD002.txt
+│   |   │   RUL_FD003.txt
+│   |   │   RUL_FD004.txt
+│   |   │   test_FD001.txt
+│   |   │   test_FD002.txt
+│   |   │   test_FD003.txt
+│   |   │   test_FD004.txt
+│   |   │   train_FD001.txt
+│   |   │   train_FD002.txt
+│   |   │   train_FD003.txt
+│   |   │   train_FD004.txt
+|   |   
 │   └───diagnostics
-│       │   README.md
-|       |   1.R
-|       |
+│   |   │   README.md
+|   |   |   1.R
+|   |   
 │   └───docs
-│       │   README.md
-|       |   Damage Propagation Modeling.pdf
-|       |
+│   |   │   README.md
+|   |   |   Damage Propagation Modeling.pdf
+|   |   
 │   └───graphs
-│       │   README.md
-|       |
+│   |   │   README.md
+|   |   
 │   └───lib
-│       │   README.md
-|       |   globals.R
-|       |   helpers.R
-|       |
+│   |   │   README.md
+|   |   |   globals.R
+|   |   |   helpers.R
+|   |   
 │   └───logs
-│       │   README.md
-|       |
+│   |   │   README.md
+|   |  
 │   └───munge
-│       │   README.md
-|       |   01-A.R
-|       |
+│   |   │   README.md
+|   |   |   01-A.R
+|   |   
 │   └───profiling
-│       │   README.md
-|       |   1.R
-|       |
+│   |   │   README.md
+|   |   |   1.R
+|   |  
 │   └───reports
-│       │   README.md
-|       |
+│   |  │   README.md
+|   |   
 │   └───src
-│       │   README.md
-|       |   initial_analysis.R
-|       |   eda.R
-|       |
+│   |   │   README.md
+|   |   |   initial_analysis.R
+|   |   |   eda.R
+|   |   
 │   └───tests
-│       │   README.md
-|       |   1.R
-|       |
+│   |   │   README.md
+|   |   |   1.R
+|       
 ```

@@ -2,6 +2,7 @@
 # Load Data and Packages
 ##################################
 
+setwd("~/Documents/GitHub/csx415-project/NASA-predictive-maintenance-project")
 library('ProjectTemplate')
 load.project()
 library(dplyr)

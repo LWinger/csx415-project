@@ -1,7 +1,7 @@
 ---
 title: "model-performance-linear"
 author: "Laura Winger"
-date: "4/19/2018"
+date: "4/24/2018"
 output:
   html_document: default
   pdf_document: default
@@ -18,7 +18,6 @@ Load the analysis in the source files of this project which fits all of the basi
 
 ```{r echo= FALSE}
 library(knitr)
-#setwd('./NASA-predictive-maintenance-project')
 source('./src/basic_linear_model.R')
 ```
 
@@ -52,7 +51,7 @@ This model is seeking to answer the question: **Will this engine fail in the nex
 ```{r echo = FALSE}
 
 # show confusion matrix
-#confusionMatrix(basic_logistic_predictions, test.FD001$class_label)
+table(test.FD001$class_label, basic_logistic_predictions > 0.5)
 
 #check how many predictions were late
 #if negative then late
@@ -61,4 +60,4 @@ accuracy <- 1-misClassError
 success_class <- accuracy == 1
 ```
 
-The accuracy of this model is `r accuracy`. This means that the model FPS success is `r success_class`.
+The confusion matrix for this model with a threshold of 0.5 is shown. The accuracy of this model is `r accuracy`. This means that the model FPS success is `r success_class`.

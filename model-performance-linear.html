@@ -120,7 +120,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">model-performance-linear</h1>
 <h4 class="author"><em>Laura Winger</em></h4>
-<h4 class="date"><em>4/19/2018</em></h4>
+<h4 class="date"><em>4/24/2018</em></h4>
 
 </div>
 
@@ -166,7 +166,11 @@ $(document).ready(function () {
 <div id="examine-the-logistic-model-performance-for-classifying-whether-or-not-the-engine-will-fail-in-the-next-30-days" class="section level3">
 <h3>Examine the logistic model performance for classifying whether or not the engine will fail in the next 30 days</h3>
 <p>This model is seeking to answer the question: <strong>Will this engine fail in the next 30 cycles?</strong></p>
-<p>The accuracy of this model is 0.98511. This means that the model FPS success is FALSE.</p>
+<pre><code>##    
+##     FALSE  TRUE
+##   0 12715    49
+##   1   132   200</code></pre>
+<p>The confusion matrix for this model with a threshold of 0.5 is shown. The accuracy of this model is 0.986179. This means that the model FPS success is FALSE.</p>
 </div>
 
 

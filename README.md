@@ -8,14 +8,17 @@ For this project, the Prognostics Center of Excellence at NASA’s Ames research
 ```
 project
 │   README.md
+│   FPS_NASA_predictive_maintenance.Rmd
+│   FPS_NASA_predictive_maintenance.html
+│   ASSETS.md
 │   project-performance.Rmd
-|   project-performance.html
-|   FPS_NASA_predictive_maintenance.Rmd
-|   FPS_NASA_predictive_maintenance.html
+│   project-performance.html
+│   model-performance-linear.Rmd
+│   model-performance-linear.html
+|   NEXTSTEPS.md
 │
 └───NASA-predictive-maintenance-project
 │   │   TODO
-|   |   README.md
 │   │
 │   └───cache
 │   |   │   README.md
@@ -52,6 +55,9 @@ project
 |   |   
 │   └───graphs
 │   |   │   README.md
+│   |   │   1-histogram_rul.png
+│   |   │   2-plot_sensors.png
+│   |   │   3-hist_sensors.png
 |   |   
 │   └───lib
 │   |   │   README.md
@@ -63,7 +69,8 @@ project
 |   |  
 │   └───munge
 │   |   │   README.md
-|   |   |   01-A.R
+|   |   |   01-prepare_train_sets.R
+|   |   |   02-prepare_test_sets.R
 |   |   
 │   └───profiling
 │   |   │   README.md
@@ -74,7 +81,7 @@ project
 |   |   
 │   └───src
 │   |   │   README.md
-|   |   |   initial_analysis.R
+|   |   |   basic_linear_model.R
 |   |   |   eda.R
 |   |   
 │   └───tests

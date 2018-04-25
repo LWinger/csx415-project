@@ -1,0 +1,64 @@
+---
+title: "model-performance-linear"
+author: "Laura Winger"
+date: "4/19/2018"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(root.dir = './NASA-predictive-maintenance-project')
+```
+
+### Load the basic linear model analysis
+
+Load the analysis in the source files of this project which fits all of the basic linear models (regression and classification).
+
+```{r echo= FALSE}
+library(knitr)
+#setwd('./NASA-predictive-maintenance-project')
+source('./src/basic_linear_model.R')
+```
+
+
+
+### Examine the linear model performance for predicting Remaining Useful Life (RUL)
+
+This model is seeking to answer the question: **How many cycles are there (starting now) before the engine will fail?**
+
+```{r echo = FALSE}
+library(Metrics)
+# determine test root mean square error
+rmse <- rmse(test.FD001$ground_truth_rul, basic_linear_predictions)
+
+#check how many predictions were late
+#if negative then late
+error <- test.FD001$ground_truth_rul - basic_linear_predictions
+num_predictions <- length(error)
+late <- length(error[error<0])
+success <- late < 1
+```
+
+The root mean square error of the basic model is `r rmse` days. However, there were `r late` predictions (out of `r num_predictions`) for the end of life that were after the engine failure. This means that the model FPS success is `r success`.
+
+
+
+### Examine the logistic model performance for classifying whether or not the engine will fail in the next 30 days
+
+This model is seeking to answer the question: **Will this engine fail in the next 30 cycles?**
+
+```{r echo = FALSE}
+
+# show confusion matrix
+#confusionMatrix(basic_logistic_predictions, test.FD001$class_label)
+
+#check how many predictions were late
+#if negative then late
+misClassError <- mean(ifelse(basic_logistic_predictions > 0.5,1,0) != test.FD001$class_label)
+accuracy <- 1-misClassError
+success_class <- accuracy == 1
+```
+
+The accuracy of this model is `r accuracy`. This means that the model FPS success is `r success_class`.

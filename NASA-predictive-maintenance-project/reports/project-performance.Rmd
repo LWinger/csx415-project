@@ -1,0 +1,40 @@
+---
+title: "project-performance"
+author: "Laura Winger"
+date: "4/19/2018"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(root.dir = './NASA-predictive-maintenance-project')
+```
+
+## Load the analysis you want to evaluate from the src directory in the project
+
+Later in the project all funcions for data engineering will be modular and packaged. Additionally, all models will be in functions, so this document will be more modular.
+
+```{r echo= FALSE}
+library(knitr)
+#setwd('./NASA-predictive-maintenance-project')
+source('./src/initial_analysis.R')
+```
+
+## Examine the model performance
+
+```{r echo = FALSE}
+library(Metrics)
+# determine test root mean square error
+rmse <- rmse(RUL.FD001[1:30,],basic_predictions)
+
+#check how many predictions were late
+#if negative then late
+error <- RUL.FD001[1:30,]-basic_predictions
+num_predictions <- length(error)
+late <- length(error<0)
+success <- late < 1
+```
+
+The root mean square error of the basic model is `r rmse` days. However, there were `r late` predictions (out of `r num_predictions`) for the end of life that were after the engine failure. This means that the model FPS success is `r success`.

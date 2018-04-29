@@ -19,6 +19,8 @@ Load the analysis in the source files of this project which fits all of the basi
 ```{r echo= FALSE}
 library(knitr)
 source('./src/4_models/basic_linear_model.R')
+linear_fit_reg_table
+linear_fit_reg_summary
 ```
 
 

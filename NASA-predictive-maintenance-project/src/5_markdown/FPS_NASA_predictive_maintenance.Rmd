@@ -1,0 +1,118 @@
+---
+title: "Formal Problem Statement: NASA Predictive Maintenance"
+author: "Laura Winger"
+date: "4/10/2018"
+output: html_document
+---
+
+## Project Background
+
+Equipment failure is a very costly issue that many traditional engineering companies face. Historically the strategy that most enterprises take to combat equipment failure is to perform regular maintenance on the equipment based on expert or operator experience. This results in higher maintenance costs than necessary. However, with the advance of the ‘Internet of Things’ where pieces of equipment have sensors and machines diagnose the health of the system in real time, the failure of specific pieces of equipment in the future can be predicted. This means that maintenance schedules and practices can be altered based on these predictions, hence the term ‘predictive maintenance’.
+ 
+For this project, the Prognostics Center of Excellence at NASA’s Ames research center has curated a data set with sensor readings from a fleet of simulated aircraft gas turbofan engines and the Ninja Air Maintenance Operations team (*made up airline for this project*) would like to leverage this data to change their current turbofan engine maintenance strategy to a predictive maintenance one. Right now Ninja Air services its engines after a set number of flight cycles (one cycle = one take-off + one landing) depending on the engine type. The CF6-80E (for Airbus A330s), requires major maintenance approximately every 7,300 cycles and minor maintenance every 200-400 cycles (*taken from KLM statistics for this example*).
+
+
+
+
+## Project Stakeholders
+
+The key players who will be involved in this project are (*fictitious names for this project, except for the data scientist*):
+
+* Laura Winger, Data Scientist on the Ninja Air Data Science team: she has been staffed on this project to develop the predictive model(s) and will be working on the Boeing Maintenance Operations team temporarily for this assignment.
+* Kathy Amaia, Manager of the Ninja Air Maintenance Operations team: she is the manager who procured funding and resources for this project. Her engagement will be at a high level and based significantly on the recommendations of her team (the project owners).
+* Stephen Deirdre, Expert Engineer on the Ninja Air Maintenance Operations team: he is the lead subject matter expert on the project and will work with Theresa to make sure that the project meets the needs and expectations of the team. Stephen has many years of experience with Ninja Air’s maintenance procedures and policies.
+* Theresa Pru, Senior Engineer on the Ninja Air Maintenance Operations team: she is another subject matter expert who will validate the work of the data scientist, Laura, and guide the project with Stephen.
+* Liam Slade, Lead Operator on the Turbofan Engine Maintenance team at Ninja Air: he leads the maintenance crew that performs maintenance tasks related to the aircraft turbofans. Any changes to the current maintenance procedures at Ninja Air will impact his team significantly. He will be an end user of the final project’s predictive maintenance program.
+* Jane Tobin, Senior Analyst on the Ninja Air Risk Management team: she is a subject matter expert in this project because changes to Ninja Air’s maintenance procedures and policies to take a data-driven approach will still need to meet external regulatory requirements and any safety risks associated with changes in the current procedures will need to be identified and understood.
+
+
+
+
+## Reason For Project
+
+Ninja Air has just started collecting robust sensor data on its equipment, and would like to start thinking about a predictive maintenance program for the company’s turbofan engines. Since the company does not have enough data to build this model yet, Ninja Air will use the data from the Prognostics Center of Excellence at NASA’s Ames research center as a starting point. Additionally, this dataset has been simulated to the point of failure, whereas Ninja Air does not intentionally allow its aircraft engines to actually get to the point of failure (since this would be a significant safety risk to customers). Each turbofan engine starts off operating normally and then develops a fault over time. The fault grows until an ultimate equipment failure.
+ 
+Implementing a predictive maintenance program would enable Ninja Air to increase its operational efficiency and decrease downtime and wasted resources. Because 10% of the company’s operating expenses are related to equipment maintenance, implementing a predictive maintenance project could have real impact on the company’s bottom line. Ninja Air would like to start with turbofan predictive maintenance but any models and experiences gained from developing this project should be scalable to other pieces of equipment in the future.
+
+
+
+
+## Project Business Value
+
+Of Ninja Air’s total operating costs, 15% is spent on maintenance. The company’s maintenance costs are split between components (30%), airframes (35%), and engines (35%). In total, the company spends \$250 million dollars on maintenance annually, which translates to \$13 million dollars on engine maintenance annually. Having to ground a flight due to mechanical issues is extremely costly to Ninja Air and presents a safety risk to its customers. Predictive maintenance means Ninja Air will avoid unnecessary downtime, which costs money and results in dissatisfied customers, and will let Ninja Air optimize maintenance operations. An [Oliver Wyman report](http://www.oliverwyman.com/content/dam/oliver-wyman/global/en/2016/may/owtl/08-Forestalling-the-Future-With-Predictive-Maintenance.pdf) suggests that predictive maintenance could increase fleet availability by up to 35% and reduce labor costs by 10%. Currently Ninja Air operates on a fixed maintenance schedule for all of its planned turbofan engine maintenance. A predictive maintenance program for turbofan engine maintenance alone would save the company between $2-4 million annually Kathy Amaia estimates. And a fully deployed program for all equipment types would have annual savings of up to three times that amount.
+ 
+Having a better understanding of the characteristics that indicate equipment failure is approaching would allow Ninja Air’s Maintenance Operations team to mitigate safety risks because then they will have a better depiction of what stage any physical degradation is at, rather than relying on scheduled times that assume all equipment degrades at a similar rate. However, communicating the impact on any exposure to risk to Ninja Air’s management will be critical to adopting any new maintenance procedures, which may be perceived as an increased risk exposure if maintenance is conducted less frequently on certain engines.
+
+
+
+
+## Project Scope and Limitations
+
+This project will have several phases:
+
+1. Conduct some exploratory data analysis
+    + Explore the different modes of failure for turbofan engines looking for patterns
+2. Development and testing machine learning models
+3. Deployment to a group of target engines for testing in the field
+4. Put predictive maintenance program into production
+ 
+The expectations are that the predictive model will identify engine failures before then happen. The team would like to take four different approaches, each with its own predictive question:
+
+1. How many cycles are there (starting now) before the engine will fail? – the challenge here is that predicting engine lifetimes accurately can be very difficult
+2. Will this engine fail in the next # cycles? – the Engine Maintenance team could accept just knowing whether or not a machine will fail in the near future
+3. Is this engine behaving normally? – the first two strategies identified by the team will require a lot of data with both normal operations and failures, if this is not available then this strategy will be pursued
+4. From these qualities of an engine, how does the risk of failure change over time? For more insight into the characteristics that indicate equipment failure and the probability of failure, an exploration into how the risk of failure changes over time is warranted
+ 
+The team has 6 weeks to conduct phases 1 and 2, and is constrained to using R / RStudio on the data scientist’s laptop in terms of technology. The Turbofan Engine Maintenance team at Ninja Air requires a dashboard with actionable insights to inform their predictive maintenance program. The goal if this predictive maintenance project is to refine the internal processes required to deploy a predictive maintenance model so that the whole approach (not just the model itself) can then be scaled out to other pieces of equipment.
+
+
+
+
+## Project Success Criteria
+
+An important aspect for the evaluation of a predictive maintenance model is the cost of an incorrect prediction. In the case of Ninja Air, if the model predicts a failure will happen early, then the company will bring the aircraft in for service too early when it could have been in operation for a bit longer without a failure. The converse is that if the model predicts a failure too late, then Ninja Air will keep the aircraft in service, putting the engine at risk of a catastrophic failure (and people’s lives at risk). It is obvious that the costs for these two prediction outcomes is not the same.  In order to account for this an asymmetric cost function can be used for model evaluation after predictions are made. It applies a penalty for predicting a failure late, rather than early.
+ 
+There are two main metrics that need to be met by this project in order to declare it a success:
+
+1. Success metric: compared to the current approach of systematic scheduled maintenance, a predictive maintenance model can optimize downtime and resources in such a way that the project saves Ninja Air at least \$2 million annually. If the project does not save at least this much, then it is not worth scaling out and overcoming the cultural barriers to adopting a new maintenance strategy. There are a number of cost/benefit methods that can be used to evaluate a predictive maintenance program project such as this one (life-cycle cost, ROI, total value), however since Ninja Air is a fictitious company for which we do not have the detailed business information to determine those metrics for, a flat $2 million in savings annually will be used here.
+2. Model performance metric: predictive maintenance models have a series of accuracy based metrics (MSE, MAPE, False Positives, False Negatives, etc) which are subject to the users specifying an acceptable early or late prediction. These models also have a series of precision based metrics (ROC, Sensitivity, standard deviation, etc). At this time, an acceptable model performance metric is anything better than the status quo. If the model can identify more failures before they happen than the current method of scheduled maintenance at periodic intervals, then the model is a success. To make some formal commitments to model performance metrics (*numbers are reasonable estimates based on airline information found on [KLM's website](https://blog.klm.com/8-things-you-probably-dont-know-about-jet-engines/)*): the model needs to identify engine failures at least 300 cycles before they happen (this is the current maintenance schedule at Ninja Air). The model cannot miss an engine failure (*still looking for resources to try to identify the risk tolerance in the airline industry*). 
+
+
+
+
+## Risks to Success
+
+If the project success metric of $2 million in savings annually is not met, then Ninja Air will continue to use its current model for planning maintenance for its aircraft engines. This is costly to the company, and it may not be an acceptable alternative in the future as its competitors move to adopt predictive maintenance efficiencies. However, the cost to the business to overhaul its processes and embrace a data driven culture is too prohibitive if the project does not meet its success metric.
+ 
+If the model performance metric is not met then additional data may need to be gathered in order to improve the model performance or more resources may need to be given to this project. Until the model performance is at a successful level, then Ninja Air will continue to follow its current maintenance processes.
+
+
+
+
+## Business Users 
+
+The business users are the Turbofan Engine Maintenance team at Ninja Air, who will be actively conducting maintenance based in the predictive maintenance model’s results. This will be a dramatic change to their current way of working (on scheduled jobs with clearly defined statements of work). The user interface for this model will need to be straightforward and have clear actions identified for an operator in the field. The model owners (the Ninja Air Maintenance Operations team), will potentially use the internals of the model for a lot of other purposes and diagnostics, but for the business users, a straightforward dashboard is necessary. Additionally, the model will need to be accepted by the Ninja Air Risk Management team which is responsible for making sure that the company meets any regulatory standards for maintenance. Any undue risk that could be introduced by the model will not be tolerated by this team. They will need to be convinced that they can trust the performance metrics to convey risk.
+ 
+The main risk to the model deployment is distrust of a ‘black-box’ model by employees. The complexities of the machine learning predictions need to be communicated in a tangible way to the employees before they will trust a whole new process for engine maintenance.
+
+
+
+
+## Proposed Project Timeline
+
+* May 2, 2018: present preliminary results of the model and its performance
+* May 16, 2018: determine whether or not the model performance meets the success criteria
+* May 30, 2018: deploy the solution on a group of target engines for testing (test for 6 months before deciding on whether or not the project is a success)
+
+
+
+
+
+
+
+
+
+
+
+
+

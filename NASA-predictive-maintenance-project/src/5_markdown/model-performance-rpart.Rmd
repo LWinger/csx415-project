@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_knit$set(root.dir = normalizePath("../.."))
 ```
 
-### Load the basic linear model analysis
+### Load the basic decision tree model analysis
 
 Load the analysis in the source files of this project which fits all of the basic linear models (regression and classification).
 
@@ -23,7 +23,7 @@ source('./src/4_models/basic_tree_model.R')
 
 
 
-### Examine the linear model performance for predicting Remaining Useful Life (RUL)
+### Examine the regression decision tree model performance for predicting Remaining Useful Life (RUL)
 
 This model is seeking to answer the question: **How many cycles are there (starting now) before the engine will fail?**
 
@@ -44,7 +44,7 @@ The root mean square error of the basic model is `r rmse` days. However, there w
 
 
 
-### Examine the logistic model performance for classifying whether or not the engine will fail in the next 30 days
+### Examine the classification decision tree model performance for classifying whether or not the engine will fail in the next 30 days
 
 This model is seeking to answer the question: **Will this engine fail in the next 30 cycles?**
 

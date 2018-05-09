@@ -38,11 +38,11 @@ rmse <- rmse(test.FD001$ground_truth_rul, basic_linear_predictions)
 #if negative then late
 error <- test.FD001$ground_truth_rul - basic_linear_predictions
 num_predictions <- length(error)
-late <- length(error[error<0])
+late <- length(error[error<=-31])
 success <- late < 1
 ```
 
-The root mean square error of the basic model is `r rmse` days. However, there were `r late` predictions (out of `r num_predictions`) for the end of life that were after the engine failure. This means that the model FPS success is `r success`.
+The root mean square error of the basic model is `r rmse` days. However, there were `r late` predictions (out of `r num_predictions`) for the end of life that were more than 30 cycles after the actual engine failure. This means that the model FPS success is `r success`.
 
 
 
@@ -51,15 +51,16 @@ The root mean square error of the basic model is `r rmse` days. However, there w
 This model is seeking to answer the question: **Will this engine fail in the next 30 cycles?**
 
 ```{r echo = FALSE}
+# get optimal cut off
+library(InformationValue)
+optCutOff <- optimalCutoff(test.FD001$class_label, basic_logistic_predictions, optimiseFor = "misclasserror")[1] 
 
 # show confusion matrix
-table(test.FD001$class_label, basic_logistic_predictions > 0.5)
+confusionMatrix(test.FD001$class_label,basic_logistic_predictions, threshold = optCutOff)
 
-#check how many predictions were late
-#if negative then late
-misClassError <- mean(ifelse(basic_logistic_predictions > 0.5,1,0) != test.FD001$class_label)
-accuracy <- 1-misClassError
-success_class <- accuracy == 1
+#check how many failures were missed
+sensitivity = sensitivity(test.FD001$class_label,basic_logistic_predictions, threshold = optCutOff)
+success_class <- sensitivity == 1
 ```
 
-The confusion matrix for this model with a threshold of 0.5 is shown. The accuracy of this model is `r accuracy`. This means that the model FPS success is `r success_class`.
+The confusion matrix for this model with an optimal threshold of `r optCutOff`  is shown. The sensitivity / true positive rate of this model is `r sensitivity`. This means that the model FPS success is `r success_class` because no engine failure can be misclassified (missed).

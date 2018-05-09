@@ -196,16 +196,15 @@ $(document).ready(function () {
 <div id="examine-the-linear-model-performance-for-predicting-remaining-useful-life-rul" class="section level3">
 <h3>Examine the linear model performance for predicting Remaining Useful Life (RUL)</h3>
 <p>This model is seeking to answer the question: <strong>How many cycles are there (starting now) before the engine will fail?</strong></p>
-<p>The root mean square error of the basic model is 48.3867618 days. However, there were 6652 predictions (out of 13096) for the end of life that were after the engine failure. This means that the model FPS success is FALSE.</p>
+<p>The root mean square error of the basic model is 48.3867618 days. However, there were 2963 predictions (out of 13096) for the end of life that were more than 30 cycles after the actual engine failure. This means that the model FPS success is FALSE.</p>
 </div>
 <div id="examine-the-logistic-model-performance-for-classifying-whether-or-not-the-engine-will-fail-in-the-next-30-days" class="section level3">
 <h3>Examine the logistic model performance for classifying whether or not the engine will fail in the next 30 days</h3>
 <p>This model is seeking to answer the question: <strong>Will this engine fail in the next 30 cycles?</strong></p>
-<pre><code>##    
-##     FALSE  TRUE
-##   0 12715    49
-##   1   132   200</code></pre>
-<p>The confusion matrix for this model with a threshold of 0.5 is shown. The accuracy of this model is 0.986179. This means that the model FPS success is FALSE.</p>
+<pre><code>##       0   1
+## 0 12701 113
+## 1    63 219</code></pre>
+<p>The confusion matrix for this model with an optimal threshold of 0.4175123 is shown. The sensitivity / true positive rate of this model is 0.6596386. This means that the model FPS success is FALSE because no engine failure can be misclassified (missed).</p>
 </div>
 
 

@@ -1,5 +1,5 @@
 ---
-title: "model-performance-random-forest"
+title: "model-performance-eXtreme-Gradient-Boosting"
 author: "Laura Winger"
 date: "5/7/2018"
 output:
@@ -12,52 +12,52 @@ knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_knit$set(root.dir = normalizePath("../.."))
 ```
 
-### Load the random forest model analysis
+### Load the eXtreme Gradient Boosting model analysis
 
 Load the analysis in the source files of this project which fits all of the random forest models (regression and classification).
 
 ```{r echo= FALSE}
 library(knitr)
-source('./src/4_models/random_forest_model.R')
+source('./src/4_models/xgboost_model.R')
 ```
 
 
 
-### Examine the random forest regression model performance for predicting Remaining Useful Life (RUL)
+### Examine the eXtreme Gradient Boosting regression model performance for predicting Remaining Useful Life (RUL)
 
 This model is seeking to answer the question: **How many cycles are there (starting now) before the engine will fail?**
 
 ```{r echo = FALSE}
 library(Metrics)
 # determine test root mean square error
-rmse <- rmse(test.FD001$ground_truth_rul, tuned_rf_reg_predictions)
+rmse <- rmse(test.FD001$ground_truth_rul, tuned_xgb_reg_predictions)
 
-postResample(pred = tuned_rf_reg_predictions, obs = test.FD001$ground_truth_rul)
+postResample(pred = tuned_xgb_reg_predictions, obs = test.FD001$ground_truth_rul)
 
 #check how many predictions were late
 #if negative then late
-error <- test.FD001$ground_truth_rul - tuned_rf_reg_predictions
+error <- test.FD001$ground_truth_rul - tuned_xgb_reg_predictions
 num_predictions <- length(error)
 late <- length(error[error<=-31])
 success <- late < 1
 ```
 
-The root mean square error of this model is `r rmse` days. However, there were `r late` predictions (out of `r num_predictions`) for the end of life that were more than 30 cycles after the actual engine failure. This means that the model FPS success is `r success`.
+The root mean square error of this model is `r rmse` cycles. However, there were `r late` predictions (out of `r num_predictions`) for the end of life that were more than 30 cycles after the actual engine failure. This means that the model FPS success is `r success`.
 
 
 
-### Examine the random forest classification model performance for classifying whether or not the engine will fail in the next 30 days
+### Examine the eXtreme Gradient Boosting classification model performance for classifying whether or not the engine will fail in the next 30 days
 
 This model is seeking to answer the question: **Will this engine fail in the next 30 cycles?**
 
 ```{r echo = FALSE}
 
 # show confusion matrix
-confusionMatrix(tuned_rf_class_predictions,factor(test.FD001$class_label))
+confusionMatrix(tuned_xgb_class_predictions,factor(test.FD001$class_label))
 
 #check how many predictions were late
 #if negative then late
-misClassError <- mean(tuned_rf_class_predictions != test.FD001$class_label)
+misClassError <- mean(tuned_xgb_class_predictions != test.FD001$class_label)
 accuracy <- 1-misClassError
 success_class <- accuracy == 1
 ```

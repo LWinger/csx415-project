@@ -154,9 +154,9 @@ $(document).ready(function () {
 ## Resampling results across tuning parameters:
 ## 
 ##   mtry  RMSE      Rsquared   MAE     
-##    2    42.06103  0.6266566  29.93163
-##    8    42.27037  0.6235039  29.92396
-##   15    42.52969  0.6192727  30.11451
+##    2    42.08650  0.6275926  29.91987
+##    8    42.23737  0.6252637  29.86181
+##   15    42.52249  0.6205817  30.07994
 ## 
 ## RMSE was used to select the optimal model using the smallest value.
 ## The final value used for the model was mtry = 2.
@@ -172,9 +172,9 @@ $(document).ready(function () {
 ## Resampling results across tuning parameters:
 ## 
 ##   mtry  Accuracy   Kappa    
-##    2    0.9596719  0.8392262
-##    8    0.9585368  0.8349701
-##   15    0.9574889  0.8309309
+##    2    0.9600439  0.8402950
+##    8    0.9583619  0.8338910
+##   15    0.9575697  0.8310446
 ## 
 ## Kappa was used to select the optimal model using the largest value.
 ## The final value used for the model was mtry = 2.</code></pre>
@@ -182,7 +182,9 @@ $(document).ready(function () {
 <div id="examine-the-random-forest-regression-model-performance-for-predicting-remaining-useful-life-rul" class="section level3">
 <h3>Examine the random forest regression model performance for predicting Remaining Useful Life (RUL)</h3>
 <p>This model is seeking to answer the question: <strong>How many cycles are there (starting now) before the engine will fail?</strong></p>
-<p>The root mean square error of this model is 46.6407837 days. However, there were 7067 predictions (out of 13096) for the end of life that were after the engine failure. This means that the model FPS success is FALSE.</p>
+<pre><code>##       RMSE   Rsquared        MAE 
+## 46.6368314  0.3785187 35.1727943</code></pre>
+<p>The root mean square error of this model is 46.6368314 days. However, there were 1 predictions (out of 13096) for the end of life that were more than 30 cycles after the actual engine failure. This means that the model FPS success is FALSE.</p>
 </div>
 <div id="examine-the-random-forest-classification-model-performance-for-classifying-whether-or-not-the-engine-will-fail-in-the-next-30-days" class="section level3">
 <h3>Examine the random forest classification model performance for classifying whether or not the engine will fail in the next 30 days</h3>
@@ -191,29 +193,29 @@ $(document).ready(function () {
 ## 
 ##           Reference
 ## Prediction     0     1
-##          0 12712   125
-##          1    52   207
-##                                           
-##                Accuracy : 0.9865          
-##                  95% CI : (0.9844, 0.9884)
-##     No Information Rate : 0.9746          
-##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
-##                                           
-##                   Kappa : 0.6937          
-##  Mcnemar's Test P-Value : 6.238e-08       
-##                                           
-##             Sensitivity : 0.9959          
-##             Specificity : 0.6235          
-##          Pos Pred Value : 0.9903          
-##          Neg Pred Value : 0.7992          
-##              Prevalence : 0.9746          
-##          Detection Rate : 0.9707          
-##    Detection Prevalence : 0.9802          
-##       Balanced Accuracy : 0.8097          
-##                                           
-##        'Positive' Class : 0               
+##          0 12716   133
+##          1    48   199
+##                                          
+##                Accuracy : 0.9862         
+##                  95% CI : (0.984, 0.9881)
+##     No Information Rate : 0.9746         
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16      
+##                                          
+##                   Kappa : 0.6805         
+##  Mcnemar's Test P-Value : 4.274e-10      
+##                                          
+##             Sensitivity : 0.9962         
+##             Specificity : 0.5994         
+##          Pos Pred Value : 0.9896         
+##          Neg Pred Value : 0.8057         
+##              Prevalence : 0.9746         
+##          Detection Rate : 0.9710         
+##    Detection Prevalence : 0.9811         
+##       Balanced Accuracy : 0.7978         
+##                                          
+##        'Positive' Class : 0              
 ## </code></pre>
-<p>The confusion matrix for this model is shown. The accuracy of this model is 0.9864844. This means that the model FPS success is FALSE.</p>
+<p>The confusion matrix for this model is shown. The accuracy of this model is 0.986179. This means that the model FPS success is FALSE.</p>
 </div>
 
 

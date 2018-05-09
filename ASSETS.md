@@ -15,4 +15,9 @@
 | 3-histogram_rul.png | csx415-project/NASA-predictive-maintenance-project/graphs  |  Vizualization of all 21 time series sensor measurements as histograms (features / independent variables) for the 100 engines. Broken out by classification label, operational vs failure within 30 days. |
 | 4-regression_tree.png | csx415-project/NASA-predictive-maintenance-project/graphs  |  Vizualization of the regression tree that was fit in the basic tree models analysis. |
 | 4-classification_tree.png | csx415-project/NASA-predictive-maintenance-project/graphs  |  Vizualization of the classification tree that was fit in the basic tree models analysis. |
+| model-performance-rf.html | csx415-project/NASA-predictive-maintenance-project/reports  |   Evaluation report of random forest models.  |
+| model-performance-rf.Rmd | csx415-project/NASA-predictive-maintenance-project/src/5_markdown  |  Evaluation of random forest models with the template. |
+| model-performance-xgboost.html | csx415-project/NASA-predictive-maintenance-project/reports  |   Evaluation report of xgboost models.  |
+| model-performance-xgboost.Rmd | csx415-project/NASA-predictive-maintenance-project/src/5_markdown  |  Evaluation of xgboost models with the template. |
+| model.predictor | csx415-project/NASA-predictive-maintenance-project/pkgs  |  Package to make new predictions for classification and regression models based on pre-trained models in package data. |
 

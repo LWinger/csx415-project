@@ -71,7 +71,9 @@ project
 │   |  │   README.md
 │   |  │   FPS_NASA_predictive_maintenance.html
 │   |  │   model-performance-linear.html
+│   |  │   model-performance-rf.html
 │   |  │   model-performance-rpart.html
+│   |  │   model-performance-xgboost.html
 │   |  │   project-performance.html
 |   |   
 │   └───src
@@ -92,12 +94,16 @@ project
 │   |   │   │   README.md
 |   |   |   │   basic_linear_model.R
 |   |   |   │   basic_tree_model.R
+|   |   |   │   random_forest_model.R
+|   |   |   │   xgboost_model.R
 │   |   |
 │   |   └───5_markdown
 │   |   │   │   FPS_NASA_predictive_maintenance.Rmd
 |   |   │   │   project-performance.Rmd
 |   |   │   │   model-performance-linear.Rmd
+│   |   │   │   model-performance-rf.Rmd
 │   |   │   │   model-performance-rpart.Rmd
+│   |   │   │   model-performance-xgboost.Rmd
 |   |   
 │   └───tests
 │   |   │   README.md

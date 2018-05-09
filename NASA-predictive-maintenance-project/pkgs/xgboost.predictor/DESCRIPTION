@@ -1,0 +1,9 @@
+Package: xgboost.predictor
+Title: Makes xgboost predictions
+Version: 0.0.0.9000
+Authors@R: person("Laura", "Winger", role = c("aut", "cre"))
+Description: Makes predictions for new data using a pre-fit xgboost model for regression and classification based on the NASA predictive maintenance dataset for Turbofan engine failure predictions.
+Depends: R (>= 3.3.3)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true

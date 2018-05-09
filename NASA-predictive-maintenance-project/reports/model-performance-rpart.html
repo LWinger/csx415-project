@@ -153,12 +153,12 @@ $(document).ready(function () {
 ## n= 20631 
 ## 
 ##         CP nsplit rel error  xerror      xstd
-## 1 0.363710      0   1.00000 1.00008 0.0092930
-## 2 0.064595      1   0.63629 0.63637 0.0074435
-## 3 0.045557      2   0.57170 0.57232 0.0070504
-## 4 0.037306      3   0.52614 0.52767 0.0066617
-## 5 0.012612      4   0.48883 0.49166 0.0062309
-## 6 0.010000      5   0.47622 0.47937 0.0060487
+## 1 0.363710      0   1.00000 1.00009 0.0092929
+## 2 0.064595      1   0.63629 0.63814 0.0074588
+## 3 0.045557      2   0.57170 0.57440 0.0070719
+## 4 0.037306      3   0.52614 0.52547 0.0066216
+## 5 0.012612      4   0.48883 0.49283 0.0062434
+## 6 0.010000      5   0.47622 0.48124 0.0060738
 ## Call:
 ## rpart(formula = rul ~ sensor_measurement_2 + sensor_measurement_3 + 
 ##     sensor_measurement_4 + sensor_measurement_6 + sensor_measurement_7 + 
@@ -169,12 +169,12 @@ $(document).ready(function () {
 ##   n= 20631 
 ## 
 ##           CP nsplit rel error    xerror        xstd
-## 1 0.36370964      0 1.0000000 1.0000807 0.009293007
-## 2 0.06459471      1 0.6362904 0.6363705 0.007443518
-## 3 0.04555683      2 0.5716956 0.5723166 0.007050382
-## 4 0.03730552      3 0.5261388 0.5276701 0.006661651
-## 5 0.01261162      4 0.4888333 0.4916554 0.006230906
-## 6 0.01000000      5 0.4762217 0.4793732 0.006048734
+## 1 0.36370964      0 1.0000000 1.0000939 0.009292861
+## 2 0.06459471      1 0.6362904 0.6381367 0.007458802
+## 3 0.04555683      2 0.5716956 0.5743999 0.007071905
+## 4 0.03730552      3 0.5261388 0.5254729 0.006621577
+## 5 0.01261162      4 0.4888333 0.4928343 0.006243425
+## 6 0.01000000      5 0.4762217 0.4812381 0.006073769
 ## 
 ## Variable importance
 ## sensor_measurement_11  sensor_measurement_4 sensor_measurement_12 
@@ -305,11 +305,11 @@ $(document).ready(function () {
 ##         CP nsplit rel error  xerror      xstd
 ## 1 0.546452      0   1.00000 1.00000 0.0165563
 ## 2 0.040968      1   0.45355 0.45355 0.0116763
-## 3 0.040323      2   0.41258 0.44871 0.0116183
-## 4 0.035806      3   0.37226 0.39774 0.0109834
-## 5 0.013065      4   0.33645 0.34387 0.0102564
-## 6 0.012258      6   0.31032 0.32871 0.0100398
-## 7 0.010000      7   0.29806 0.32032 0.0099175
+## 3 0.040323      2   0.41258 0.43774 0.0114856
+## 4 0.035806      3   0.37226 0.40387 0.0110623
+## 5 0.013065      4   0.33645 0.34194 0.0102291
+## 6 0.012258      6   0.31032 0.34097 0.0102154
+## 7 0.010000      7   0.29806 0.31903 0.0098985
 ## Call:
 ## rpart(formula = factor(class_label) ~ sensor_measurement_2 + 
 ##     sensor_measurement_3 + sensor_measurement_4 + sensor_measurement_6 + 
@@ -323,11 +323,11 @@ $(document).ready(function () {
 ##           CP nsplit rel error    xerror        xstd
 ## 1 0.54645161      0 1.0000000 1.0000000 0.016556265
 ## 2 0.04096774      1 0.4535484 0.4535484 0.011676267
-## 3 0.04032258      2 0.4125806 0.4487097 0.011618345
-## 4 0.03580645      3 0.3722581 0.3977419 0.010983435
-## 5 0.01306452      4 0.3364516 0.3438710 0.010256441
-## 6 0.01225806      6 0.3103226 0.3287097 0.010039826
-## 7 0.01000000      7 0.2980645 0.3203226 0.009917482
+## 3 0.04032258      2 0.4125806 0.4377419 0.011485609
+## 4 0.03580645      3 0.3722581 0.4038710 0.011062315
+## 5 0.01306452      4 0.3364516 0.3419355 0.010229104
+## 6 0.01225806      6 0.3103226 0.3409677 0.010215402
+## 7 0.01000000      7 0.2980645 0.3190323 0.009898495
 ## 
 ## Variable importance
 ## sensor_measurement_11  sensor_measurement_4 sensor_measurement_12 
@@ -512,10 +512,35 @@ $(document).ready(function () {
 <div id="examine-the-classification-decision-tree-model-performance-for-classifying-whether-or-not-the-engine-will-fail-in-the-next-30-days" class="section level3">
 <h3>Examine the classification decision tree model performance for classifying whether or not the engine will fail in the next 30 days</h3>
 <p>This model is seeking to answer the question: <strong>Will this engine fail in the next 30 cycles?</strong></p>
-<pre><code>##       0   1
-## 0 12693 145
-## 1    71 187</code></pre>
-<p>The confusion matrix for this model with an optimal threshold of 1.01 is shown. The sensitivity / true positive rate of this model is 0.563253. This means that the model FPS success is FALSE because no engine failure can be misclassified (missed).</p>
+<pre><code>## Warning in as.POSIXlt.POSIXct(Sys.time()): unknown timezone 'zone/tz/2018c.
+## 1.0/zoneinfo/America/Edmonton'</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction     0     1
+##          0 12693   145
+##          1    71   187
+##                                           
+##                Accuracy : 0.9835          
+##                  95% CI : (0.9812, 0.9856)
+##     No Information Rate : 0.9746          
+##     P-Value [Acc &gt; NIR] : 3.959e-12       
+##                                           
+##                   Kappa : 0.6256          
+##  Mcnemar's Test P-Value : 6.799e-07       
+##                                           
+##             Sensitivity : 0.56325         
+##             Specificity : 0.99444         
+##          Pos Pred Value : 0.72481         
+##          Neg Pred Value : 0.98871         
+##              Prevalence : 0.02535         
+##          Detection Rate : 0.01428         
+##    Detection Prevalence : 0.01970         
+##       Balanced Accuracy : 0.77885         
+##                                           
+##        'Positive' Class : 1               
+## </code></pre>
+<p>The confusion matrix for this model with an optimal threshold of 0.3832258 is shown. The sensitivity / true positive rate of this model is 0.563253. This means that the model FPS success is FALSE because no engine failure can be misclassified (missed).</p>
 </div>
 
 

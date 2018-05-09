@@ -52,14 +52,19 @@ This model is seeking to answer the question: **Will this engine fail in the nex
 
 ```{r echo = FALSE}
 
-# show confusion matrix
-confusionMatrix(tuned_xgb_class_predictions,factor(test.FD001$class_label))
+# get optimal cut off
+library(InformationValue)
+optCutOff <- optimalCutoff(test.FD001$class_label, tuned_xgb_class_predictions[,2],optimiseFor = "misclasserror")[1] 
 
-#check how many predictions were late
-#if negative then late
-misClassError <- mean(tuned_xgb_class_predictions != test.FD001$class_label)
-accuracy <- 1-misClassError
-success_class <- accuracy == 1
+# show confusion matrix
+thresh <- optCutOff
+out <- factor(ifelse(as.numeric(tuned_xgb_class_predictions[,2]) > thresh, 1, 0), levels = c(0, 1))
+caret::confusionMatrix(out, as.factor(test.FD001$class_label), positive = '1')
+
+#check how many failures were missed
+sensitivity <- sensitivity(test.FD001$class_label,as.numeric(tuned_xgb_class_predictions[,2]), threshold = optCutOff)
+success_class <- sensitivity == 1
+
 ```
 
-The confusion matrix for this model is shown. The accuracy of this model is `r accuracy`. This means that the model FPS success is `r success_class`.
+The confusion matrix for this model with an optimal threshold of `r optCutOff`  is shown. The sensitivity / true positive rate of this model is `r sensitivity`. This means that the model FPS success is `r success_class` because no engine failure can be misclassified (missed).

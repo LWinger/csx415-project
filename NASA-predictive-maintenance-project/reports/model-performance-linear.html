@@ -201,9 +201,34 @@ $(document).ready(function () {
 <div id="examine-the-logistic-model-performance-for-classifying-whether-or-not-the-engine-will-fail-in-the-next-30-days" class="section level3">
 <h3>Examine the logistic model performance for classifying whether or not the engine will fail in the next 30 days</h3>
 <p>This model is seeking to answer the question: <strong>Will this engine fail in the next 30 cycles?</strong></p>
-<pre><code>##       0   1
-## 0 12701 113
-## 1    63 219</code></pre>
+<pre><code>## Warning in as.POSIXlt.POSIXct(Sys.time()): unknown timezone 'zone/tz/2018c.
+## 1.0/zoneinfo/America/Edmonton'</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction     0     1
+##          0 12701   113
+##          1    63   219
+##                                           
+##                Accuracy : 0.9866          
+##                  95% CI : (0.9844, 0.9885)
+##     No Information Rate : 0.9746          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.7065          
+##  Mcnemar's Test P-Value : 0.0002212       
+##                                           
+##             Sensitivity : 0.65964         
+##             Specificity : 0.99506         
+##          Pos Pred Value : 0.77660         
+##          Neg Pred Value : 0.99118         
+##              Prevalence : 0.02535         
+##          Detection Rate : 0.01672         
+##    Detection Prevalence : 0.02153         
+##       Balanced Accuracy : 0.82735         
+##                                           
+##        'Positive' Class : 1               
+## </code></pre>
 <p>The confusion matrix for this model with an optimal threshold of 0.4175123 is shown. The sensitivity / true positive rate of this model is 0.6596386. This means that the model FPS success is FALSE because no engine failure can be misclassified (missed).</p>
 </div>
 

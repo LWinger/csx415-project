@@ -35,7 +35,7 @@ output <- train.FD001$rul
 # create the tuning grid
 tuneGridXGB <- expand.grid(
   nrounds=c(350),
-  max_depth = c(4, 6),
+  max_depth = c(4,6),
   eta = c(0.01, 0.1),
   gamma = c(0.01),
   colsample_bytree = c(1),
@@ -80,6 +80,7 @@ tuned_xgb_class_model <- train(x = predictors, y = output,
                               method = "xgbTree", # eXtreme Gradient Boosting
                               #preProcess = c("center", "scale", "pca"),
                               metric = "Kappa", # use Kappa to evaluate models due to imbalance
+                              objective   = "binary:logistic", # pass to xgboost to get probabilities
                               tuneGrid = tuneGridXGB)
 
 print(tuned_xgb_class_model)
@@ -92,4 +93,4 @@ factors <- c('sensor_measurement_2','sensor_measurement_3', 'sensor_measurement_
              'sensor_measurement_7', 'sensor_measurement_8','sensor_measurement_9', 'sensor_measurement_11','sensor_measurement_12',
              'sensor_measurement_13','sensor_measurement_14','sensor_measurement_15', 'sensor_measurement_17',
              'sensor_measurement_20','sensor_measurement_21')
-tuned_xgb_class_predictions <- predict(tuned_xgb_class_model, test.FD001[factors], type = 'raw')
+tuned_xgb_class_predictions <- predict(tuned_xgb_class_model, test.FD001[factors], type = 'prob')

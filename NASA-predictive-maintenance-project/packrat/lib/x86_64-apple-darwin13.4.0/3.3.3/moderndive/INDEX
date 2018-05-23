@@ -1,0 +1,11 @@
+bowl                    A sampling bowl of red and white balls
+bowl_samples            Sampling from a tub of balls
+get_regression_points   Get regression points
+get_regression_summaries
+                        Get regression summary values
+get_regression_table    Get regression table
+moderndive              moderndive - Accompaniment Package to
+                        ModernDive: An Introduction to Statistical and
+                        Data Sciences via R
+pennies                 A population of 800 pennies sampled in 2011
+rep_sample_n            Repeating sampling.

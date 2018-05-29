@@ -62,7 +62,14 @@ factors <- c('sensor_measurement_2','sensor_measurement_3', 'sensor_measurement_
              'sensor_measurement_7', 'sensor_measurement_8','sensor_measurement_9', 'sensor_measurement_11','sensor_measurement_12',
              'sensor_measurement_13','sensor_measurement_14','sensor_measurement_15', 'sensor_measurement_17',
              'sensor_measurement_20','sensor_measurement_21')
-tuned_xgb_reg_predictions <- predict(tuned_xgb_reg_model, test.FD001[factors])
+
+#prediction on last (ie. most recent) test datapoint is the only one that counts
+most_recent_test <- test.FD001 %>%
+  group_by(unit_number) %>%
+  filter(row_number() == which.max(cycles))
+
+
+tuned_xgb_reg_predictions <- predict(tuned_xgb_reg_model, most_recent_test[factors])
 
 
 
@@ -93,4 +100,4 @@ factors <- c('sensor_measurement_2','sensor_measurement_3', 'sensor_measurement_
              'sensor_measurement_7', 'sensor_measurement_8','sensor_measurement_9', 'sensor_measurement_11','sensor_measurement_12',
              'sensor_measurement_13','sensor_measurement_14','sensor_measurement_15', 'sensor_measurement_17',
              'sensor_measurement_20','sensor_measurement_21')
-tuned_xgb_class_predictions <- predict(tuned_xgb_class_model, test.FD001[factors], type = 'prob')
+tuned_xgb_class_predictions <- predict(tuned_xgb_class_model, most_recent_test[factors], type = 'prob')

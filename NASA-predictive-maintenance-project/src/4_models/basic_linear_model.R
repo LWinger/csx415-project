@@ -35,7 +35,13 @@ factors <- c('sensor_measurement_2','sensor_measurement_3', 'sensor_measurement_
              'sensor_measurement_7', 'sensor_measurement_8','sensor_measurement_9', 'sensor_measurement_11','sensor_measurement_12',
              'sensor_measurement_13','sensor_measurement_14','sensor_measurement_15', 'sensor_measurement_17',
              'sensor_measurement_20','sensor_measurement_21')
-basic_linear_predictions <- predict(basic_linear_model, test.FD001[factors])
+
+#prediction on last (ie. most recent) test datapoint is the only one that counts
+most_recent_test <- test.FD001 %>%
+  group_by(unit_number) %>%
+  filter(row_number() == which.max(cycles))
+
+basic_linear_predictions <- predict(basic_linear_model, most_recent_test[factors])
 
 
 
@@ -58,10 +64,6 @@ basic_logistic_model <- glm(factor(class_label) ~ sensor_measurement_2 + sensor_
 linear_fit_class_summary <- summary(basic_linear_model) 
 linear_class_conf <- confint(basic_linear_model) # 95 CI for the coefficients
 
-#make predictions
-factors <- c('sensor_measurement_2','sensor_measurement_3', 'sensor_measurement_4', 'sensor_measurement_6',
-             'sensor_measurement_7', 'sensor_measurement_8','sensor_measurement_9', 'sensor_measurement_11','sensor_measurement_12',
-             'sensor_measurement_13','sensor_measurement_14','sensor_measurement_15', 'sensor_measurement_17',
-             'sensor_measurement_20','sensor_measurement_21')
-basic_logistic_predictions <- predict(basic_logistic_model, test.FD001[factors], type = 'response')
+#use same test set as created in regression modeling
+basic_logistic_predictions <- predict(basic_logistic_model, most_recent_test[factors], type = 'response')
 

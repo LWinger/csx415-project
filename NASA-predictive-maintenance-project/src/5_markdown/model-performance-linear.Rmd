@@ -32,11 +32,11 @@ This model is seeking to answer the question: **How many cycles are there (start
 ```{r echo = FALSE}
 library(Metrics)
 # determine test root mean square error
-rmse <- rmse(test.FD001$ground_truth_rul, basic_linear_predictions)
+rmse <- rmse(most_recent_test$ground_truth_rul, basic_linear_predictions)
 
 #check how many predictions were late
 #if negative then late
-error <- test.FD001$ground_truth_rul - basic_linear_predictions
+error <- most_recent_test$ground_truth_rul - basic_linear_predictions
 num_predictions <- length(error)
 late <- length(error[error<=-31])
 success <- late < 1
@@ -53,15 +53,15 @@ This model is seeking to answer the question: **Will this engine fail in the nex
 ```{r echo = FALSE}
 # get optimal cut off
 library(InformationValue)
-optCutOff <- optimalCutoff(test.FD001$class_label, basic_logistic_predictions, optimiseFor = "misclasserror")[1] 
+optCutOff <- optimalCutoff(most_recent_test$class_label, basic_logistic_predictions, optimiseFor = "misclasserror")[1] 
 
 # show confusion matrix
 thresh <- optCutOff
 out <- factor(ifelse(basic_logistic_predictions > thresh, 1, 0), levels = c(0, 1))
-caret::confusionMatrix(out, as.factor(test.FD001$class_label), positive = '1')
+caret::confusionMatrix(out, as.factor(most_recent_test$class_label), positive = '1')
 
 #check how many failures were missed
-sensitivity = sensitivity(test.FD001$class_label,basic_logistic_predictions, threshold = optCutOff)
+sensitivity = sensitivity(most_recent_test$class_label,basic_logistic_predictions, threshold = optCutOff)
 success_class <- sensitivity == 1
 ```
 

@@ -30,11 +30,11 @@ This model is seeking to answer the question: **How many cycles are there (start
 ```{r echo = FALSE}
 library(Metrics)
 # determine test root mean square error
-rmse <- rmse(test.FD001$ground_truth_rul, basic_linear_predictions)
+rmse <- rmse(most_recent_test$ground_truth_rul, basic_linear_predictions)
 
 #check how many predictions were late
 #if negative then late
-error <- test.FD001$ground_truth_rul - basic_linear_predictions
+error <- most_recent_test$ground_truth_rul - basic_linear_predictions
 num_predictions <- length(error)
 late <- length(error[error<0])
 success <- late < 1
@@ -51,11 +51,11 @@ This model is seeking to answer the question: **Will this engine fail in the nex
 ```{r echo = FALSE}
 
 # show confusion matrix
-table(test.FD001$class_label, basic_logistic_predictions > 0.5)
+table(most_recent_test$class_label, basic_logistic_predictions > 0.5)
 
 #check how many predictions were late
 #if negative then late
-misClassError <- mean(ifelse(basic_logistic_predictions > 0.5,1,0) != test.FD001$class_label)
+misClassError <- mean(ifelse(basic_logistic_predictions > 0.5,1,0) != most_recent_test$class_label)
 accuracy <- 1-misClassError
 success_class <- accuracy == 1
 ```

@@ -1,0 +1,15 @@
+PackratFormat: 1.4
+PackratVersion: 0.4.9.2
+RVersion: 3.5.0
+Repos: CRAN=https://cran.rstudio.com/
+
+Package: NASApredictor
+Source: source
+Version: 1.0
+SourcePath: ~/Documents/GitHub/csx415-project/pkgs//NASApredictor
+Hash: dc32b74d30d5d289c647f163bfec520f
+
+Package: packrat
+Source: CRAN
+Version: 0.4.9-2
+Hash: 47dbd4e04dcd01da02a2021203205cb1

@@ -1,8 +1,8 @@
 Package: NASApredictor
-Title: Final Model Objects Stored to Make Future Predictions
+Title: NASA Engine Failure Predictions
 Version: 1.0
 Authors@R: person("Laura", "Winger", email = "first.last@example.com", role = c("aut", "cre"))
-Description: Each model generated in the NASA predictive maintenance project is stored here for easy future predictions.
+Description: Each model generated in the NASA predictive maintenance project is stored here for easy future predictions and deployment. A function to make predictions on new data is also available in this package.
 Depends: R (>= 3.3.3)
 License: MIT
 Encoding: UTF-8

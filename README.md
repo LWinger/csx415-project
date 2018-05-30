@@ -39,8 +39,12 @@ project
 |
 └───deploy
 │   |   README.md
+|   |   make-predictions.R
+|   |
 │   └───packrat
 │   │   |   init.R
+│   │   └───bundles
+│   │   |   │   deploy-2018-05-30.tar.gz
 │   │   └───lib
 │   │   |   └───x86_64-apple-darwin13.4.0
 │   │   |
@@ -48,9 +52,9 @@ project
 │   │   |   └───x86_64-apple-darwin13.4.0
 │   │   |
 │   │   └───src
-│   │   |   │   abind
-│   |   |   |   assertive
-│   |   |   |   ...
+│   │   |   │   NASApredictor
+│   |   |   |   packrat
+│   |   |   
 │   |   |   packrat.lock
 │   |   |   packrat.opts
 |
@@ -78,15 +82,22 @@ project
 |   |   |   │   tuned_rf_reg_model.rda
 |   |   |   │   tuned_xgb_class_model.rda
 |   |   |   │   tuned_xgb_reg_model.rda
+|   |   |   │   train_sample.rda
+|   |   |   │   test_sample.rda
+|   |   |
 |   |   │   DESCRIPTION
 |   |   └─── inst
 |   |   |   │   model-performance-linear.html
 |   |   |   │   model-performance-rf.html
 |   |   |   │   model-performance-rpart.html
 |   |   |   │   model-performance-xgboost.html
+|   |   |
 |   |   └─── man
 |   |   │   NAMESPACE
+|   |   |
 |   |   └─── R
+|   |   |   │   predict.R
+|   |   |
 |   |   └─── tests
 |   |   |   └─── testthat
 |   |   |   |   │   test_model_objects.R

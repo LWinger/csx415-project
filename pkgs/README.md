@@ -8,3 +8,5 @@ To create this package `setwd()` to this directory. Then run `devtools::create("
 To install this package run `devtools::install("NASApredictor")`.
 
 To run the tests that exist for this package run `devtools::test("NASApredictor")`.
+
+The fully encapsulated, working version of the solution (which includes this package, primarily) is in the `csx415-project\deploy` directory.

@@ -19,5 +19,6 @@
 | model-performance-rf.Rmd | csx415-project/NASA-predictive-maintenance-project/src/5_markdown  |  Evaluation of random forest models with the template. |
 | model-performance-xgboost.html | csx415-project/NASA-predictive-maintenance-project/reports  |   Evaluation report of xgboost models.  |
 | model-performance-xgboost.Rmd | csx415-project/NASA-predictive-maintenance-project/src/5_markdown  |  Evaluation of xgboost models with the template. |
-| model.predictor | csx415-project/NASA-predictive-maintenance-project/pkgs  |  Package to make new predictions for classification and regression models based on pre-trained models in package data. |
+| NASApredictor Package | csx415-project/NASA-predictive-maintenance-project/pkgs  |  Package to make new predictions for classification and regression models based on pre-trained models in package data. There is a function defined in the package to make new predictions. |
+| make-predictions.R | csx415-project/NASA-predictive-maintenance-project/deploy  |  Fully encapsulated, working version of the solution using packrat to capture all dependencies. Deployed in the form of an R script. |
 

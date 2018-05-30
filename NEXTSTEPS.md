@@ -1,6 +1,6 @@
 # Has the model met the success criteria?
 
-The basic linear and tree models for both classification and regression do not meet the success criteria outlined in the FPS.
+None of the models for both classification and regression do not meet the success criteria outlined in the FPS.
 
 The next steps are:
  - introduce some new features that are lag / window functions of the existing sensor data

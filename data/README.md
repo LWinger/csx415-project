@@ -1,7 +1,14 @@
+## General Comments on the Data
+
+This is a curated dataset for predictive maintenance and is available online as described below. There is limited information about the features (sensor data) provided. In this project only the first data set is used: FD001.
+
+
+## Location of Dataset for Download
+
 Downloaded data from: https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/
 
-Documentation Provided with Dataset
-_____________________________________
+
+## Documentation Provided with Dataset
 
 Data Set: FD001
 Train trjectories: 100

@@ -17,4 +17,4 @@ test_sample_data <- getdata("test_sample")
 # tuned_xgb_reg_model 
 
 
-predictions <- new_NASApredictions("tuned_xgb_class_model", test_sample_data)
+predictions <- new_NASApredictions("tuned_xgb_reg_model", test_sample_data)

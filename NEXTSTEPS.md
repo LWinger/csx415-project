@@ -9,4 +9,5 @@ The next steps are:
  - make predictions for the 100 test engines only once (ie based on the final reading predict RUL and if it will fail in next 30 days) [done]
  - try a asymetric cost function in the model performance evaluation that penalizes false negatives more than false positives
  - two other questions that we have not tried to answer yet -> Is this engine behaving normally? (annomoly detection) and from these qualities of an engine, how does the risk of failure change over time? (survival analysis)
+ - expand analysis beyond the first data set, FD001, to the other three datasets and compare performance of the models
  
